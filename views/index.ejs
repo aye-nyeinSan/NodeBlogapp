@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>nodeAppBlog</title>
-  </head>
+  <%- include('./component/head.ejs')%>
   <body>
-    <nav>
-      <div class="site-title">
-        <a href="/"><h1>Blog Ninjas</h1></a>
-        <p> Node Project for CMS Blog.</p>
-      </div>
-  <ul>
-  <li>  <a href="/">Blogs</a></li>
-  <li>  <a href="/about">About</a></li>
-  <li><a href="/blogs/create">New Blog</a></li>
-  </ul>
-    </nav>
+   
+    <%- include('./component/nav.ejs')%>
     <div class=" blogs content">
       <h1>All Blogs</h1>
+  <% if(blogs.length>0){%>
 
+  <% blogs.forEach((blog)=>{%>
+   <h2><%=blog.title%></h2>
+   <h4><%=blog.snippet%></h4><%})%>
+<% }else {%>
+   <h2> There is nothing to display.</h2>
+ <%  }%> 
     </div>
+    <%- include('./component/footer.ejs')%>
   </body>
 </html>

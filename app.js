@@ -2,7 +2,7 @@
 const  express=require( 'express');
 const app= express();
 const mongoose=require('mongoose');
-const Blog=require('./views/models/blogschema');
+const Blog=require('./models/blogschema');
 
 ///Connect with MangoDB
 const dbURI='mongodb+srv://ayenyeinsan:test1234@cluster0.ho942.mongodb.net/node-practice?retryWrites=true&w=majority'
@@ -40,7 +40,9 @@ Blog.find()
 })
 app.post('/blogs',(req,res)=>{
     const blog=new Blog(req.body);
-    blog.save().then((result)=>res.redirect('/blogs')).catch((err)=>{console.log(err);})
+    blog.save()
+    .then((result)=>res.redirect('/blogs'))
+    .catch((err)=>{console.log(err);})
 })
 
 
