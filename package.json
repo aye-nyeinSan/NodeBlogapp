@@ -14,7 +14,9 @@
     "express": "^4.17.1",
     "mongoose": "^5.12.15"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^27.0.6"
+  },
   "description": "Node Project for CMS blog",
   "repository": {
     "type": "git",
