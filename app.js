@@ -23,10 +23,6 @@ app.get('/', (resq,res) => {
 
 })
 
-
-
-
-
 app.get('/about', (resq,res) => {
     res.render('about',{ title:'About'});
 
@@ -46,7 +42,10 @@ app.use((req,res) => {
    res.status(404);
    res.render('404',{ title:'404'});
 })
+//update 
+//upload photo
 
+//user=>user auth
 
 var port= process.env.PORT|| 5050
 app.listen(port,()=>console.log(`listening on ${port}` ));
