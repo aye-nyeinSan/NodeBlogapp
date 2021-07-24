@@ -1,36 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <%- include('./component/head.ejs')%>
-  <body>
-   
-    <%- include('./component/nav.ejs')%>
-    <div>
-        <h2><%=blog.title%></h2>
-        <p><%=blog.body%></p>
-    <a class="delete" data-doc="<%= blog._id%> "> Delete</a>
-    <a class="update-post" href='/blogs/<%= blog._id %>/update' >Update</a>
-    <%- include('./component/footer.ejs')%>
-    <script> 
-
-    const deletepost=document.querySelector("a.delete");
-
-    deletepost.addEventListener('click',(e)=>{
-      const deletebutt=`/blogs/${deletepost.dataset.doc}`;
-
-      fetch(deletebutt , {
-        method:'DELETE',
-      })
-      .then((res)=>{return res.json()})
-      .then((data)=> window.location.href=data.redirect)
-      .catch((err)=>{console.log(err);})
- })
-   
- 
-    </script>
-  </body>
-  
-=======
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <%- include('./component/head.ejs')%>
@@ -63,5 +30,4 @@
     </script>
   </body>
   
->>>>>>> origin
   </html>
