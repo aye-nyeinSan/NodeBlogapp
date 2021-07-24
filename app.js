@@ -18,13 +18,10 @@ mongoose.connect(dbURI,{ useNewUrlParser: true ,useUnifiedTopology: true},{ useF
 //register ejs
 app.set('view engine','ejs');
 //incoming req as strings or arrays
-app.use(express.urlencoded({extended:true}));//posting data to server (req.body)<<<<<<
+app.use(express.urlencoded({extended:true}));//posting data to server (req.body)
 app.use(express.static('views'));
 
 app.use(methodOverride('_method'));
-
-
-app.use(express.static('views'))
 
 
 app.get('/', (req,res) => {
@@ -40,7 +37,6 @@ app.get('/about-us',(req,res) => {
     res.render('about',{ title:'About'});
 
 })
-
 
 app.get('/blogs/:id/update',(req,res) => {
     const postid=req.params.id;
@@ -65,11 +61,6 @@ app.put('/blogs/:id',(req,res)=>{
 
  
    
-
-
-
-
-
 //blogRoute
 app.use('/blogs',blogroute);
 
