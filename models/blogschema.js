@@ -10,7 +10,7 @@ const blogschema= new Schema({
         type:String,
         required:true
     },
-    body:{
+   body:{
         type:String,
         required:true
     }

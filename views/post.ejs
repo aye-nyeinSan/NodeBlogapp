@@ -8,6 +8,7 @@
         <h2><%=blog.title%></h2>
         <p><%=blog.body%></p>
     <a class="delete" data-doc="<%= blog._id%> "> Delete</a>
+    <a class="update-post" href='/blogs/<%= blog._id %>/update' >Update</a>
     <%- include('./component/footer.ejs')%>
     <script> 
 
@@ -22,11 +23,9 @@
       .then((res)=>{return res.json()})
       .then((data)=> window.location.href=data.redirect)
       .catch((err)=>{console.log(err);})
-       
-
-    })
-  
-
+ })
+   
+ 
     </script>
   </body>
   
