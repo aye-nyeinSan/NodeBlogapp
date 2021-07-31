@@ -1,11 +1,13 @@
 
 const  express=require( 'express');
-
 const app= express();
 const mongoose=require('mongoose');
+const bodyParser=require('body-parser');
 const methodOverride=require('method-override');
 const Blog = require('./models/blogschema');
 const blogroute=require('./routes/blogroute');
+const { $where } = require('./models/blogschema');
+
 
 ///Connect with MangoDB
 const dbURI='mongodb+srv://ayenyeinsan:test1234@cluster0.ho942.mongodb.net/node-practice?retryWrites=true&w=majority'
@@ -20,13 +22,15 @@ app.set('view engine','ejs');
 //incoming req as strings or arrays
 app.use(express.urlencoded({extended:true}));//posting data to server (req.body)
 app.use(express.static('views'));
-
+app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
 
 app.get('/', (req,res) => {
-    res.redirect('/blogs');
-
+  
+    console.log(req.url);
+    res.status(200).redirect('/blogs');
+   
 })
 
 app.get('/about', (req,res) => {
@@ -38,28 +42,12 @@ app.get('/about-us',(req,res) => {
 
 })
 
-app.get('/blogs/:id/update',(req,res) => {
-    const postid=req.params.id;
-    Blog.findById(postid)
-    .then(result=> {
-        res.render('update',{title:'Edit post', blog:result})})
-   .catch((err)=>{res.render('404')})
-    
-})
+app.get('/api/blogs',(req,res)=>{
+    Blog.find({}, {title:1,snippet:1,body:1}).sort({createdAt:-1})
+    .then((result)=>{ res.json(result)})
+    .catch((err)=>{console.log(err);})
 
-app.put('/blogs/:id',(req,res)=>{
-    const postid=req.params.id;
-    
-    Blog.findByIdAndUpdate(postid,req.body)
-    .then((result)=>   
-        res.json({redirect:`/blogs/${postid}`})
-      )
-    .catch((err)=>console.log(err))
-   
 })
-  
-
- 
    
 //blogRoute
 app.use('/blogs',blogroute);
@@ -68,6 +56,13 @@ app.use((req,res) => {
    res.status(404);
    res.render('404',{ title:'404'});
 })
+
+
+
+
+
+
+
 //update 
 //upload photo
 
