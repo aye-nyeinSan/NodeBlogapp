@@ -6,7 +6,7 @@ const bodyParser=require('body-parser');
 const methodOverride=require('method-override');
 const Blog = require('./models/blogschema');
 const blogroute=require('./routes/blogroute');
-const { $where } = require('./models/blogschema');
+
 
 
 ///Connect with MangoDB
