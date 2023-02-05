@@ -1,16 +1,19 @@
 
 const  express=require( 'express');
 const app= express();
-const mongoose=require('mongoose');
+
+const mongoose=require('mongoose');//database
 const bodyParser=require('body-parser');
 const methodOverride=require('method-override');
 const Blog = require('./models/blogschema');
 const blogroute=require('./routes/blogroute');
+require('dotenv').config()//env variable
+//console.log(process.env);
 
 
 
 ///Connect with MangoDB
-const dbURI='mongodb+srv://ayenyeinsan:test1234@cluster0.ho942.mongodb.net/node-practice?retryWrites=true&w=majority'
+const dbURI=process.env.DatabaseURI;
 mongoose.connect(dbURI,{ useNewUrlParser: true ,useUnifiedTopology: true},{ useFindAndModify: false })
 .then((result)=>console.log('connected to database...'))
 .catch(error=>console.log(error));
