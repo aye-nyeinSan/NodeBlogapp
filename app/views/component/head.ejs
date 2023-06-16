@@ -1,0 +1,81 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>nodeAppBlog🤖 |<%= title%></title>
+    <style>
+      body{
+        margin:0px auto;
+        padding :0 20px;
+        font-family: 'Courier New', Courier, monospace;
+      }
+      h1,p,h3,h4,a,ul,li{
+        text-decoration: none;
+        list-style: none;
+        color: black;
+      }
+      nav li{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-bottom: 20px;
+
+      }
+      .blogs a{
+        display:block;
+        border-left: 20px salmon solid;
+        padding-left: 10px;
+         }
+      .delete{
+        cursor: pointer;
+        background: rgb(93, 217, 255);
+      
+      }
+      .update-post{
+        cursor:pointer;
+        background: hsl(81, 100%, 76%);;
+      }
+     
+      nav {
+        display: flex;
+        justify-content: space-between;
+        border-style: dashed;
+        border-top-style: none;
+        border-left-style: none;
+        border-right-style: none;
+        border-color: gray;}
+        nav ul{
+          display: flex;
+          margin-right: 20px;
+          justify-content: space-between;
+        
+        }
+        nav li{
+          margin-right: 20px;
+        }
+
+        .create-blog {
+          margin-top: 80px;
+          margin-left: 20px;
+          display: block;
+           align-items: center;
+        }
+        .create-blog form{
+          max-width: 400px;
+          margin: 0 auto;
+
+        }
+        .create-blog input,.create-blog textarea
+        { display:block;
+        width: 100%;
+        padding: 8px;}
+        .create-blog button{
+         background-color:  #f84367;
+         font-size: large;
+         border:none;
+         cursor: pointer;
+         margin-top: 20px;
+         padding: 8px;
+         border-radius: 10px;
+        }
+      </style>
+  </head>
