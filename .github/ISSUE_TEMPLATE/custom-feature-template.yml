@@ -1,5 +1,6 @@
 
 name: Custom feature template
+description: File a feature report
 title: "[Feature]:"
 labels: '[Feature]:'
 assignees: 
