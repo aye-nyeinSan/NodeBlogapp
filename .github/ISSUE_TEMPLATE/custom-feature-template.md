@@ -1,9 +1,21 @@
 ---
 name: Custom feature template
-about: Describe this issue template's purpose here.
-title: ''
-labels: ''
-assignees: ''
+about: This is the feature request custom template. 
+title: "[Feature]:"
+labels: '[Feature]:'
+assignees: 
+  - aye-nyeinsan
+  - AyeNyeinSanISRubi
+body:
+  - type: textarea
+    id: featureDetails
+    attributes:
+      label: "Explain about Feature Details."
+      description: "What do you want to explain?"
+      placeholder: report in here.
+    validations:
+      required: true
+     
 
 ---
 
