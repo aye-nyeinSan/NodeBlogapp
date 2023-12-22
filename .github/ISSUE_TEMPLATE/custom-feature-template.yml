@@ -1,4 +1,4 @@
----
+
 name: Custom feature template
 about: This is the feature request custom template. 
 title: "[Feature]:"
@@ -17,6 +17,5 @@ body:
       required: true
      
 
----
 
 
