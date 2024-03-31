@@ -17,7 +17,7 @@ require('dotenv').config()//env variable
 const mongoose=require('mongoose');//database
 mongoose.set("strictQuery", false);
 
-const mongodb="mongodb://ayeNyeinSan:test123@mongo:27017/blogs";
+const mongodb="mongodb+srv://ayeNyeinsan:test123@cluster0.hrxl7jv.mongodb.net/";
 mongoose.connect(mongodb,{ useNewUrlParser: true ,useUnifiedTopology: true},{ useFindAndModify: false })
 .then((result)=>console.log('connected to database...'))
 .catch(error=>console.log(error));

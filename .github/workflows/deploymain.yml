@@ -1,0 +1,64 @@
+name: Deploy main to EC2
+on:
+    push:
+        branches:
+            - main  
+    pull_request: 
+        branches:
+            - main
+    
+jobs:
+    docker:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Checkout 
+              uses: actions/checkout@v3
+            - name: Set up QEMU
+              uses: docker/setup-qemu-action@v2
+            - name: Login to dockerHub
+              uses: docker/login-action@v2
+              with:
+                username: ${{secrets.DOCKER_HUB_USERNAME}}
+                password: ${{secrets.DOCKER_HUB_TOKEN}}
+            - name: prepare the docker-compose run  
+              run: |
+                    ls -l
+
+            - name: Build and push
+              uses: docker/build-push-action@v4
+              with: 
+                context: .
+                push: true
+                tags: 29ayenyeinsan/nodeblogg
+            - name: copy file via ssh password
+              uses: appleboy/scp-action@v0.1.4
+              with:
+                host: ${{secrets.HOST_SERVER}}
+                username: ${{secrets.HOST_USER_NAME}}
+                key: ${{ secrets.HOST_SSH_PRIVATE_KEY}}
+                port: 22
+                source: |
+                   docker-compose.yml
+                target: "/home/ubuntu/NodeBlog"
+            - name: docker compose
+              uses: appleboy/ssh-action@v0.1.10
+              with: 
+                host: ${{secrets.HOST_SERVER}}
+                username: ${{secrets.HOST_USER_NAME}}
+                key: ${{secrets.HOST_SSH_PRIVATE_KEY}}
+                port: 22
+                script: |
+                    sudo apt-get update
+                    sudo apt-get install -y docker
+                    sudo apt-get install -y docker-compose
+                    sudo usermod -aG docker ubuntu
+                
+                     cd /home/ubuntu/NodeBlog
+                     echo ${{secrets.DOCKER_HUB_TOKEN }} | docker login --username ${{secrets.DOCKER_HUB_USERNAME}} --password-stdin
+                     sudo docker-compose down
+                     sudo docker-compose pull
+                    
+                     sudo docker-compose up -d
+
+
+                 

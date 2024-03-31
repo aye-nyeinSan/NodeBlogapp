@@ -2,16 +2,11 @@ version: '3.8'
 
 services:
   nodeblog:
-    image: 711771546343.dkr.ecr.eu-north-1.amazonaws.com/nodeblog:1.0
+    image:  29ayenyeinsan/nodeblogg
     ports:
       - 3000:5050
 
-  mongo:
-    image: mongo:latest
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ayeNyeinSan
-      MONGO_INITDB_ROOT_PASSWORD: test123
+
 
   #mongo-express:
     #image: mongo-express
